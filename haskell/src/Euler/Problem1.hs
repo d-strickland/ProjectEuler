@@ -10,8 +10,6 @@ summultiples m n
     | otherwise = quot ((terms + 1) * terms * m) 2
                   where terms = quot n m
 
-main :: IO ()
-main = do
-    let limit = 999
-    let result = (summultiples 3 limit) + (summultiples 5 limit) - (summultiples 15 limit)
-    putStrLn (show result)
+p1solution = (summultiples 3 limit) + (summultiples 5 limit) - (summultiples 15 limit)
+             where limit = 999
+
