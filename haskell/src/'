@@ -3,11 +3,8 @@
 
 module Euler (
     p1solution,
-    p2solution,
-
-    isPrime
+    p2solution
 ) where
 
 import Euler.Problem1
 import Euler.Problem2
-import Euler.Utils
