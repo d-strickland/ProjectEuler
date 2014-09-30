@@ -27,7 +27,31 @@ isPrime n
     | n  < 2 = False
     | n == 2 = True
     | n == 3 = True
-    | otherwise = not (any (divideN) rPrimes)
-                  where rPrimes = (roughPrimes . floor . sqrt . fromIntegral) n
-                        divideN m = (n `rem` m) == 0
+    | otherwise = not (any (`divides` n) (sqrtRPrimes n))
+
+
+primeFactors :: Integer -> [Integer]
+-- Return the prime factors of a number, sorted in descending order
+primeFactors n
+    | n < 2 = []
+    | otherwise = pFactors n [] (sqrtRPrimes n)
+
+pFactors :: Integer -> [Integer] -> [Integer] -> [Integer]
+-- Take an integer, a list of known prime factors, and a list of potential prime
+-- factors. Complete the list of known prime factors
+pFactors 1 factors _ = factors
+pFactors n known [] = n:known
+pFactors n [] (p:potential)
+    | p `divides` n = pFactors (n `quot` p) [p] potential
+    | otherwise     = pFactors n [] potential
+pFactors n (k:known) (p:potential)
+    | k `divides` n = pFactors (n `quot` k) (k:known) (p:potential)
+    | p `divides` n = pFactors (n `quot` p) (p:k:known) potential
+    | otherwise     = pFactors n (k:known) potential
+
+
+divides m n = (n `rem` m) == 0
+
+--Rough primes up to sqrt(n)
+sqrtRPrimes = roughPrimes . floor . sqrt . fromIntegral
 

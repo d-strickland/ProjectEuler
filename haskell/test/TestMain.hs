@@ -9,6 +9,7 @@ import Test.Tasty.HUnit
 import Euler.UtilsTest
 import Euler.P1Test
 import Euler.P2Test
+import Euler.P3Test
 
 main :: IO ()
 main = defaultMain tests
@@ -23,12 +24,18 @@ tests =
             testCase "Merge 2" testMerge2,
             testCase "Merge 3" testMerge3,
             testCase "Merge 4" testMerge4,
+
             testCase "Potential Primes" testRoughPrimes,
+
             testCase "Primetest 1" testIsPrime1,
             testCase "Primetest 2" testIsPrime2,
             testCase "Primetest 3" testIsPrime3,
             testCase "Primetest 4" testIsPrime4,
-            testCase "Primetest 5" testIsPrime5
+            testCase "Primetest 5" testIsPrime5,
+
+            testCase "Prime Factors 1" testPrimeFactors1,
+            testCase "Prime Factors 2" testPrimeFactors2,
+            testCase "Prime Factors 3" testPrimeFactors3
         ],
 
         testGroup "Problem 1"
@@ -40,5 +47,11 @@ tests =
         testGroup "Problem 2"
         [
             testCase "Fibonacci Sequence" testFibSequence
+        ],
+
+        testGroup "Problem 3"
+        [
+            testCase "Largest Prime Factor" testLargestPrimeFactor
         ]
     ]
+

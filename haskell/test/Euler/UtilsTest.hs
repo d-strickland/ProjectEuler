@@ -34,3 +34,12 @@ testIsPrime4 = False @=? isPrime 289
 testIsPrime5 :: Assertion
 testIsPrime5 = True @=? isPrime 141650963
 
+testPrimeFactors1 :: Assertion
+testPrimeFactors1 = [7] @=? primeFactors 7
+
+testPrimeFactors2 :: Assertion
+testPrimeFactors2 = [17] @=? primeFactors 4913
+
+testPrimeFactors3 :: Assertion
+testPrimeFactors3 = [3571,2851,2] @=? primeFactors 58051611542
+

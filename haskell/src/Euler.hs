@@ -1,13 +1,17 @@
 -- This module creates the public API. It simply imports the necessary internal
--- modules and reexports specific functions.
+-- modules and re-exports specific functions.
 
 module Euler (
     p1solution,
     p2solution,
+    p3solution,
 
-    isPrime
+    isPrime,
+    primeFactors
 ) where
 
 import Euler.Problem1
 import Euler.Problem2
+import Euler.Problem3
 import Euler.Utils
+
