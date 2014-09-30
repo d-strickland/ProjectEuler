@@ -11,6 +11,7 @@ import Euler.P1Test
 import Euler.P2Test
 import Euler.P3Test
 import Euler.P4Test
+import Euler.P5Test
 
 main :: IO ()
 main = defaultMain tests
