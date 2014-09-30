@@ -10,6 +10,7 @@ import Euler.UtilsTest
 import Euler.P1Test
 import Euler.P2Test
 import Euler.P3Test
+import Euler.P4Test
 
 main :: IO ()
 main = defaultMain tests
@@ -52,6 +53,17 @@ tests =
         testGroup "Problem 3"
         [
             testCase "Largest Prime Factor" testLargestPrimeFactor
+        ],
+
+        testGroup "Problem 4"
+        [
+            testCase "Palindrome 1" testIsPalindrome1,
+            testCase "Palindrome 2" testIsPalindrome2,
+            testCase "Palindrome 3" testIsPalindrome3,
+            testCase "Palindrome 4" testIsPalindrome4,
+            testCase "Palindrome 5" testIsPalindrome5,
+
+            testCase "Local Max Palindrome" testLocalBest
         ]
     ]
 
