@@ -1,5 +1,7 @@
 module Euler.Utils where
 
+import Data.List.Ordered hiding (merge)
+
 roughPrimes :: Integer -> [Integer]
 -- All primes, except for 2 and 3, are of the form 6k +/- 1.
 -- To prove this, suppose n is not of the form 6k +/- 1. Then
@@ -54,4 +56,16 @@ divides m n = (n `rem` m) == 0
 
 --Rough primes up to sqrt(n)
 sqrtRPrimes = roughPrimes . floor . sqrt . fromIntegral
+
+
+-- Generate primes up to n using the Sieve of Eratosthenes
+-- We already culled numbers divisible by 2 and 3, so take those out and add
+-- them back at the end.
+primesTo n
+    | n < 2     = []
+    | n == 2    = [2]
+    | otherwise = 2 : 3 : sieve (tail (tail (roughPrimes n)))
+    where sieve (p:xs)
+            | p*p > n   = p:xs
+            | otherwise = p : sieve (xs `minus` [p*p, p*p + 2*p..])
 
