@@ -6,6 +6,7 @@ module Euler (
     p2solution,
     p3solution,
     p4solution,
+    p5solution,
 
     isPrime,
     primeFactors
@@ -15,5 +16,6 @@ import Euler.Problem1
 import Euler.Problem2
 import Euler.Problem3
 import Euler.Problem4
+import Euler.Problem5
 import Euler.Utils
 

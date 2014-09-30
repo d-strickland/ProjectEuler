@@ -64,6 +64,11 @@ tests =
             testCase "Palindrome 5" testIsPalindrome5,
 
             testCase "Local Max Palindrome" testLocalBest
+        ],
+
+        testGroup "Problem 5"
+        [
+            testCase "LCM" testLcm
         ]
     ]
 
