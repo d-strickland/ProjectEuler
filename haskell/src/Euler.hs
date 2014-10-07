@@ -9,9 +9,12 @@ module Euler (
     p5solution,
     p6solution,
     p7solution,
+    p8solution,
+    p9solution,
 
     isPrime,
-    primeFactors
+    primeFactors,
+    primesTo
 ) where
 
 import Euler.Utils
@@ -22,4 +25,6 @@ import Euler.Problem4
 import Euler.Problem5
 import Euler.Problem6
 import Euler.Problem7
+import Euler.Problem8
+import Euler.Problem9
 
