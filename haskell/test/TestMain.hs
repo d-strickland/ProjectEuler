@@ -12,6 +12,7 @@ import Euler.P2Test
 import Euler.P3Test
 import Euler.P4Test
 import Euler.P5Test
+import Euler.P11Test
 
 main :: IO ()
 main = defaultMain tests
@@ -70,6 +71,14 @@ tests =
         testGroup "Problem 5"
         [
             testCase "LCM" testLcm
+        ],
+
+        testGroup "Problem 11"
+        [
+            testCase "Sublists" testSublists,
+            testCase "Sublists too Short" testTooShortList,
+            testCase "Left Right Slices" testLeftRight,
+            testCase "Up Down Slices" testUpDown
         ]
     ]
 
