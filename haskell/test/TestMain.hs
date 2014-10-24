@@ -13,6 +13,7 @@ import Euler.P3Test
 import Euler.P4Test
 import Euler.P5Test
 import Euler.P11Test
+import Euler.P12Test
 
 main :: IO ()
 main = defaultMain tests
@@ -38,7 +39,12 @@ tests =
 
             testCase "Prime Factors 1" testPrimeFactors1,
             testCase "Prime Factors 2" testPrimeFactors2,
-            testCase "Prime Factors 3" testPrimeFactors3
+            testCase "Prime Factors 3" testPrimeFactors3,
+
+            testCase "Prime Factorization" testPrimeFactorization,
+            testCase "Triangles" testTriangles,
+            testCase "General Pents" testGeneralPents,
+            testCase "Partitions" testPartitions
         ],
 
         testGroup "Problem 1"
@@ -79,6 +85,15 @@ tests =
             testCase "Sublists too Short" testTooShortList,
             testCase "Left Right Slices" testLeftRight,
             testCase "Up Down Slices" testUpDown
+        ],
+
+        testGroup "Problem 12"
+        [
+            testCase "Divisors 1" testNDivisors1,
+            testCase "Divisors 2" testNDivisors2,
+            testCase "Divisors 3" testNDivisors3,
+            testCase "Divisors 4" testNDivisors4,
+            testCase "Divisors 5" testNDivisors5
         ]
     ]
 

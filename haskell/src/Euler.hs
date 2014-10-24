@@ -13,10 +13,18 @@ module Euler (
     p9solution,
     p10solution,
     p11solution,
+    p12solution,
 
     isPrime,
     primeFactors,
-    primesTo
+    primeFactorization,
+    primesTo,
+    figurateNumbers,
+    triangleNumbers,
+    squareNumbers,
+    pentagonalNumbers,
+    generalPents,
+    partitions
 ) where
 
 import Euler.Utils
@@ -31,4 +39,5 @@ import Euler.Problem8
 import Euler.Problem9
 import Euler.Problem10
 import Euler.Problem11
+import Euler.Problem12
 
