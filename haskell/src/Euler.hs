@@ -15,6 +15,7 @@ module Euler (
     p11solution,
     p12solution,
     p13solution,
+    p14solution,
 
     isPrime,
     primeFactors,
@@ -42,4 +43,5 @@ import Euler.Problem10
 import Euler.Problem11
 import Euler.Problem12
 import Euler.Problem13
+import Euler.Problem14
 

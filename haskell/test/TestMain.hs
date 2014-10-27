@@ -14,6 +14,7 @@ import Euler.P4Test
 import Euler.P5Test
 import Euler.P11Test
 import Euler.P12Test
+import Euler.P14Test
 
 main :: IO ()
 main = defaultMain tests
@@ -94,6 +95,15 @@ tests =
             testCase "Divisors 3" testNDivisors3,
             testCase "Divisors 4" testNDivisors4,
             testCase "Divisors 5" testNDivisors5
+        ],
+
+        testGroup "Problem 14"
+        [
+            testCase "Collatz Chain" testCollatzChain,
+            testCase "Collatz Length 1" testCollatzLength1,
+            testCase "Collatz Length 2" testCollatzLength2,
+            testCase "Collatz Length 3" testCollatzLength3,
+            testCase "Collatz Length 4" testCollatzLength4
         ]
     ]
 
