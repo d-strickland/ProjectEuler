@@ -1,0 +1,60 @@
+module Euler.Problem15 where
+-- Starting in the top left corner of a 2×2 grid, and only being able to move to
+-- the right and down, there are exactly 6 routes to the bottom right corner.
+-- How many such routes are there through a 20×20 grid?
+
+-- Let's start with a 3-by-3 grid and work our way up from there. The number of
+-- paths possible from each node is labelled below (assume there's one path for
+-- the "empty grid," or the bottom right corner):
+--
+--          6---3---1
+--          |   |   |
+--          3---2---1
+--          |   |   |
+--          1---1---1
+--
+-- One can see a pattern start to emerge from this grid: the number of paths from
+-- a node is equal to the sum of the possible paths from the node to its East and
+-- South. This is easy to verify intuitively. So, we can define the number of paths,
+-- at node (p,q) as
+--          paths(p,q) = paths(p+1,q) + paths(p,q+1).
+-- We could use equation as-is, but this particular recurrence happens to be well
+-- studied. It may look more familliar if we start from the bottom right, rather
+-- than the top-left. Let P(r,s) be the number of paths at node (r,s) where the
+-- top left node in the graph above is (2,2) and the bottom right is (0,0).
+-- Then
+--          P(r,s) = P(r,s-1) + P(r-1,s),
+-- given P(0,0) = 1, and P(r,s) = 0 for negative inputs.
+-- Does this look more familliar? No? Let's try something else. Flipping the
+-- grid diagonally so that (0,0) is at the top yields the following grid. Let's
+-- extend it past 2-by-2, as well.
+--
+--                                     1
+--                                    / \
+--                                   1   1
+--                                  / \ / \
+--                                 1   2   1
+--                                / \ / \ / \
+--                               1   3   3   1
+--                              / \ / \ / \ / \
+--                             1   4   6   4   1
+--                            / \ / \ / \ / \ / \
+--                          ...  5   10  10  5  ...
+--                            \ / \ / \ / \ / \ /
+--                            ...  15  20  15 ...
+--                              \ / \ / \ / \ /
+--                              ...  35  35 ...
+--                                \ / \ / \ /
+--                                ...  70 ...
+--                                  \ / \ /
+--                                  ... ...
+--                                    \ /
+--                                    ...
+--
+-- Now does it look familliar? It's Pascal's Triangle!
+-- Specifically, we are interested in the middle column of Pascal's Triangle,
+-- which is represented by C(2m,m), where C(n,k) is the combination function.
+-- See http://en.wikipedia.org/wiki/Pascal%27s_triangle#Combinations.
+import Math.Combinat.Numbers
+p15solution = (pascalRow 40)!!20
+
