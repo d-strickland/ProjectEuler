@@ -15,6 +15,7 @@ import Euler.P5Test
 import Euler.P11Test
 import Euler.P12Test
 import Euler.P14Test
+import Euler.P18Test
 
 main :: IO ()
 main = defaultMain tests
@@ -104,6 +105,12 @@ tests =
             testCase "Collatz Length 2" testCollatzLength2,
             testCase "Collatz Length 3" testCollatzLength3,
             testCase "Collatz Length 4" testCollatzLength4
+        ],
+
+        testGroup "Problem 18"
+        [
+            testCase "Accum" testAccum,
+            testCase "Max Path" testMaxPath
         ]
     ]
 

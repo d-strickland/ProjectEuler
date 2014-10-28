@@ -2,4 +2,4 @@ module Main ( main ) where
 import Euler
 
 main :: IO ()
-main = print p16solution
+main = print p18solution
