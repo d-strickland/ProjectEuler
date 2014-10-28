@@ -18,7 +18,7 @@ module Euler (
     p14solution,
     p15solution,
     p16solution,
-
+    p17solution,
     p18solution,
 
     isPrime,
@@ -50,6 +50,6 @@ import Euler.Problem13
 import Euler.Problem14
 import Euler.Problem15
 import Euler.Problem16
-
+import Euler.Problem17
 import Euler.Problem18
 

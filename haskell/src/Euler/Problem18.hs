@@ -1,5 +1,4 @@
 module Euler.Problem18 where
--- What is the sum of the digits of the number 2^1000?
 -- By starting at the top of the triangle below and moving to adjacent numbers on the row below, the maximum total from top to bottom is 23.
 -- 
 --    3
