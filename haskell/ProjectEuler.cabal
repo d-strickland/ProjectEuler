@@ -29,8 +29,9 @@ library
                           Euler.Problem7, Euler.Problem8, Euler.Problem9,
                           Euler.Problem10, Euler.Problem11, Euler.Problem12,
                           Euler.Problem13, Euler.Problem14, Euler.Problem15,
-                          Euler.Problem16, Euler.Problem17, Euler.Problem18
-    build-depends:        base, digits, data-ordlist, combinat
+                          Euler.Problem16, Euler.Problem17, Euler.Problem18,
+                          Euler.Problem19
+    build-depends:        base, digits, data-ordlist, combinat, time
     ghc-options:          -Wall
                           -O2
 
