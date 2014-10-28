@@ -21,6 +21,7 @@ module Euler (
     p17solution,
     p18solution,
     p19solution,
+    p20solution,
 
     isPrime,
     primeFactors,
@@ -54,4 +55,5 @@ import Euler.Problem16
 import Euler.Problem17
 import Euler.Problem18
 import Euler.Problem19
+import Euler.Problem20
 

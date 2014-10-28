@@ -1,5 +1,6 @@
 module Euler.Utils where
 
+import Data.List
 import Data.List.Ordered hiding (merge)
 
 ----------------------------------------------------------------
@@ -114,4 +115,6 @@ primesTo n
     where sieve (p:xs)
             | p*p > n   = p:xs
             | otherwise = p : sieve (xs `minus` [p*p, p*p + 2*p..])
+
+factorial n = foldl' (*) 1 [2..n]
 

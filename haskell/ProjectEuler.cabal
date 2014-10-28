@@ -24,13 +24,14 @@ library
     hs-source-dirs:       src
     default-language:     Haskell2010
     exposed-modules:      Euler
-    other-modules:        Euler.Problem1, Euler.Problem2, Euler.Problem3,
+    other-modules:        Euler.Utils,
+                          Euler.Problem1, Euler.Problem2, Euler.Problem3,
                           Euler.Problem4, Euler.Problem5, Euler.Problem6,
                           Euler.Problem7, Euler.Problem8, Euler.Problem9,
                           Euler.Problem10, Euler.Problem11, Euler.Problem12,
                           Euler.Problem13, Euler.Problem14, Euler.Problem15,
                           Euler.Problem16, Euler.Problem17, Euler.Problem18,
-                          Euler.Problem19
+                          Euler.Problem19, Euler.Problem20
     build-depends:        base, digits, data-ordlist, combinat, time
     ghc-options:          -Wall
                           -O2
