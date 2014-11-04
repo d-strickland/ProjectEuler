@@ -3,4 +3,4 @@ module Euler.Problem10 where
 import Euler.Utils
 
 limit = 2000000
-p10solution = sum (primesTo limit)
+p10solution = sum (takeWhile (< limit) primes)

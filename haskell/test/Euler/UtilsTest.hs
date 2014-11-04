@@ -17,7 +17,7 @@ testMerge4 :: Assertion
 testMerge4 = [1,5,2,3,4] @=? merge [1,2,3,4] [5]
 
 testRoughPrimes :: Assertion
-testRoughPrimes = [2,3,5,7,11,13,17,19,23,25] @=? roughPrimes 25
+testRoughPrimes = [2,3,5,7,11,13,17,19,23,25] @=? takeWhile (<= 25) roughPrimes
 
 testIsPrime1 :: Assertion
 testIsPrime1 = False @=? isPrime (-7)
@@ -46,23 +46,20 @@ testPrimeFactors3 = [3571,2851,2] @=? primeFactors 58051611542
 testPrimeFactorization :: Assertion
 testPrimeFactorization = [(5,1),(3,1),(2,2)] @=? primeFactorization 60
 
-testPrimesTo1 :: Assertion
-testPrimesTo1 = [] @=? primesTo (-9)
+testPrimes1 :: Assertion
+testPrimes1 = [2] @=? take 1 primes
 
-testPrimesTo2 :: Assertion
-testPrimesTo2 = [2] @=? primesTo 2
+testPrimes2 :: Assertion
+testPrimes2 = [2,3] @=? take 2 primes
 
-testPrimesTo3 :: Assertion
-testPrimesTo3 = [2,3] @=? primesTo 3
-
-testPrimesTo4 :: Assertion
-testPrimesTo4 = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,
+testPrimes3 :: Assertion
+testPrimes3 =   [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,
                  79,83,89,97,101,103,107,109,113,127,131,137,139,149,151,157,
                  163,167,173,179,181,191,193,197,199,211,223,227,229,233,239,
                  241,251,257,263,269,271,277,281,283,293,307,311,313,317,331,
                  337,347,349,353,359,367,373,379,383,389,397,401,409,419,421,
                  431,433,439,443,449,457,461,463,467,479,487,491,499]
-                    @=? primesTo 500
+                    @=? takeWhile (< 500) primes
 
 testTriangles :: Assertion
 testTriangles = [1,3,6,10,15,21,28,36,45,55,66,78,91,105,120,136,153,171,190,

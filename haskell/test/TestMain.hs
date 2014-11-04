@@ -39,6 +39,10 @@ tests =
             testCase "Primetest 4" testIsPrime4,
             testCase "Primetest 5" testIsPrime5,
 
+            testCase "Primes 1" testPrimes1,
+            testCase "Primes 2" testPrimes2,
+            testCase "Primes 3" testPrimes3,
+
             testCase "Prime Factors 1" testPrimeFactors1,
             testCase "Prime Factors 2" testPrimeFactors2,
             testCase "Prime Factors 3" testPrimeFactors3,

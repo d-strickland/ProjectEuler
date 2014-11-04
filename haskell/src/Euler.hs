@@ -26,7 +26,7 @@ module Euler (
     isPrime,
     primeFactors,
     primeFactorization,
-    primesTo,
+    primes,
     figurateNumbers,
     triangleNumbers,
     squareNumbers,

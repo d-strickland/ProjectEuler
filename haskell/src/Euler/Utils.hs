@@ -38,24 +38,16 @@ partitions = map p [0..]
                     where ps = [partitions!!(n-m) | m <- takeWhile (<=n) generalPents]
 
 ----------------------------------------------------------------
--------------------- Prime Number Functions --------------------
+-------------------- Prime Number Utilities --------------------
 ----------------------------------------------------------------
-roughPrimes :: Integer -> [Integer]
--- Return all numbers that are not divisible by 2 or 3 up to n.
+-- All numbers that are not divisible by 2 or 3 up to n.
 --
 -- All primes, except for 2 and 3, are of the form 6k +/- 1.
 -- To prove this, suppose n is not of the form 6k +/- 1. Then
 --      n = 6k                       is divisible by six and is not prime,
 --      n = 6k +/- 2 = 2(3k +/- 1)   is divisible by 2, or
 --      n = 6k + 3 = 3(2k + 1)       is divisible by 3.
-roughPrimes n
-    | n  < 2    = []
-    | n == 2    = [2]
-    | otherwise = 2 : 3 : (merge [5,11..n] [7,13..n])
-
---Rough primes up to sqrt(n)
-sqrtRPrimes = roughPrimes . floor . sqrt . fromIntegral
-
+roughPrimes = 2 : 3 : (merge [5,11..] [7,13..])
 
 merge :: [a] -> [a] -> [a]
 -- Merge two lists, taking from alternating lists.
@@ -70,7 +62,7 @@ isPrime n
     | n  < 2 = False
     | n == 2 = True
     | n == 3 = True
-    | otherwise = not (any (`divides` n) (sqrtRPrimes n))
+    | otherwise = not (any (`divides` n) (takeWhile (\x->x*x <= n) roughPrimes))
 
 
 primeFactors :: Integer -> [Integer]
@@ -79,13 +71,13 @@ primeFactors = (map fst) . primeFactorization
 
 
 primeFactorization :: Integer -> [(Integer, Integer)]
--- Return the prime factors of a number sorted in descending order and their
+-- Return the prime factors of a number sorted in ascending order and their
 -- associated powers.
 -- Ex: 60 = 5 * 3 * 2^2, so
 --     primeFactorization 60 = [(5,1), (3,1), (2,2)]
 primeFactorization n
     | n < 2 = []
-    | otherwise = pFactorization n [] (sqrtRPrimes n)
+    | otherwise = pFactorization n [] (takeWhile (\x->x*x <= n) roughPrimes)
 
 pFactorization :: Integer -> [(Integer, Integer)] -> [Integer] -> [(Integer,Integer)]
 -- Take an integer, a list of known prime factors and their associated powers,
@@ -106,15 +98,8 @@ divides m n = (n `rem` m) == 0
 
 
 -- Generate primes up to n using the Sieve of Eratosthenes.
-primesTo n
-    | n < 2     = []
-    | n == 2    = [2]
--- We already culled numbers divisible by 2 and 3, so take those out and add
--- them back to the start.
-    | otherwise = 2 : 3 : sieve (tail (tail (roughPrimes n)))
-    where sieve (p:xs)
-            | p*p > n   = p:xs
-            | otherwise = p : sieve (xs `minus` [p*p, p*p + 2*p..])
+primes = 2 : 3 : sieve (tail (tail roughPrimes))
+    where sieve (p:xs) = p : sieve (xs `minus` [p*p, p*p + 2*p..])
 
 factorial n = foldl' (*) 1 [2..n]
 
