@@ -41,10 +41,10 @@ testPrimeFactors2 :: Assertion
 testPrimeFactors2 = [17] @=? primeFactors 4913
 
 testPrimeFactors3 :: Assertion
-testPrimeFactors3 = [3571,2851,2] @=? primeFactors 58051611542
+testPrimeFactors3 = [2,2851,3571] @=? primeFactors 58051611542
 
 testPrimeFactorization :: Assertion
-testPrimeFactorization = [(5,1),(3,1),(2,2)] @=? primeFactorization 60
+testPrimeFactorization = [(2,2),(3,1),(5,1)] @=? primeFactorization 60
 
 testPrimes1 :: Assertion
 testPrimes1 = [2] @=? take 1 primes

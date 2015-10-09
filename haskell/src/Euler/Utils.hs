@@ -66,23 +66,23 @@ isPrime n
 
 
 primeFactors :: Integer -> [Integer]
--- Return the prime factors of a number, sorted in descending order
+-- Return the prime factors of a number, sorted in ascending order
 primeFactors = (map fst) . primeFactorization
 
 
 primeFactorization :: Integer -> [(Integer, Integer)]
 -- Return the prime factors of a number sorted in ascending order and their
 -- associated powers.
--- Ex: 60 = 5 * 3 * 2^2, so
---     primeFactorization 60 = [(5,1), (3,1), (2,2)]
+-- Ex: 60 = 2^2 * 3 * 5, so
+--     primeFactorization 60 = [(2,2), (3,1), (5,1)]
 primeFactorization n
     | n < 2 = []
-    | otherwise = pFactorization n [] (takeWhile (\x->x*x <= n) roughPrimes)
+    | otherwise = reverse $ pFactorization n [] (takeWhile (\x->x*x <= n) roughPrimes)
 
 pFactorization :: Integer -> [(Integer, Integer)] -> [Integer] -> [(Integer,Integer)]
 -- Take an integer, a list of known prime factors and their associated powers,
 -- and a list of potential prime factors. Complete the list of known prime
--- factors and powers. Sort in descending order by factor size.
+-- factors and powers. Sort in ascending order by factor size.
 pFactorization 1 factors _ = factors
 pFactorization n known [] = (n,1):known
 pFactorization n [] (p:potential)
@@ -97,7 +97,7 @@ pFactorization n ((k,pow):known) (p:potential)
 divides m n = (n `rem` m) == 0
 
 
--- Generate primes up to n using the Sieve of Eratosthenes.
+-- Generate all primes using the Sieve of Eratosthenes.
 primes = 2 : 3 : sieve (tail (tail roughPrimes))
     where sieve (p:xs) = p : sieve (xs `minus` [p*p, p*p + 2*p..])
 
