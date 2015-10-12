@@ -1,7 +1,7 @@
 module Euler.Utils where
 
 import Data.List
-import Data.List.Ordered hiding (merge)
+import Data.List.Ordered (minus)
 
 ----------------------------------------------------------------
 ----------------------- Useful Sequences -----------------------
@@ -18,7 +18,7 @@ pentagonalNumbers = figurateNumbers 5
 --          pn = (3n^2 - n) / 2
 -- generalizing this to n = 1,-1,2,-2,3,-3,4... seems arbitrary, but it has
 -- some applications to number theory.
-generalPents = map p (merge [1,2..] [-1,-2..])
+generalPents = map p (concatMap (\x -> [x, -x]) [1..])
              where p n = (3*n*n - n) `quot` 2
 
 
@@ -42,18 +42,19 @@ partitions = map p [0..]
 ----------------------------------------------------------------
 -- All numbers that are not divisible by 2 or 3 up to n.
 --
--- All primes, except for 2 and 3, are of the form 6k +/- 1.
--- To prove this, suppose n is not of the form 6k +/- 1. Then
---      n = 6k                       is divisible by six and is not prime,
+-- All primes, except for 2 and 3, are equal to 6k +/- 1 for some integer k.
+-- To prove this, suppose n is not of the form 6k +/- 1. Then one of the
+-- following is true:
+--      n = 6k                       is divisible by six,
 --      n = 6k +/- 2 = 2(3k +/- 1)   is divisible by 2, or
 --      n = 6k + 3 = 3(2k + 1)       is divisible by 3.
-roughPrimes = 2 : 3 : (merge [5,11..] [7,13..])
+-- therefore, n is not prime. Note that 6k +/- 1 is not prime for all k (eg: 25)
+roughPrimes = 2 : 3 : (concatMap (\k -> [6*k - 1, 6*k + 1]) $ [1..])
 
-merge :: [a] -> [a] -> [a]
--- Merge two lists, taking from alternating lists.
-merge [] ys = ys
-merge xs [] = xs
-merge (x:xs) (y:ys) = x : y : merge xs ys
+
+-- Generate all primes using the Sieve of Eratosthenes.
+primes = 2 : 3 : sieve (drop 2 roughPrimes)
+    where sieve (p:xs) = p : sieve (xs `minus` [p*p, p*p + 2*p..])
 
 
 isPrime :: Integer -> Bool
@@ -62,7 +63,7 @@ isPrime n
     | n  < 2 = False
     | n == 2 = True
     | n == 3 = True
-    | otherwise = not (any (`divides` n) (takeWhile (\x->x*x <= n) roughPrimes))
+    | otherwise = not (any (`divides` n) (takeWhile (\x->(x*x <= n)) roughPrimes))
 
 
 primeFactors :: Integer -> [Integer]
@@ -97,9 +98,10 @@ pFactorization n ((k,pow):known) (p:potential)
 divides m n = (n `rem` m) == 0
 
 
--- Generate all primes using the Sieve of Eratosthenes.
-primes = 2 : 3 : sieve (tail (tail roughPrimes))
-    where sieve (p:xs) = p : sieve (xs `minus` [p*p, p*p + 2*p..])
+
+----------------------------------------------------------------
+------------------------ Misc. Utilities -----------------------
+----------------------------------------------------------------
 
 factorial n = foldl' (*) 1 [2..n]
 

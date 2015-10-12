@@ -26,11 +26,6 @@ tests =
     [
         testGroup "Utils"
         [
-            testCase "Merge 1" testMerge1,
-            testCase "Merge 2" testMerge2,
-            testCase "Merge 3" testMerge3,
-            testCase "Merge 4" testMerge4,
-
             testCase "Potential Primes" testRoughPrimes,
 
             testCase "Primetest 1" testIsPrime1,
