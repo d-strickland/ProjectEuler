@@ -3,7 +3,7 @@ module Euler.Problem3 where
 
 import Euler.Utils
 
-largestPrimeFactor = head . primeFactors
+largestPrimeFactor = head . reverse . primeFactors
 
 p3solution = largestPrimeFactor 600851475143
 
